@@ -3,8 +3,15 @@
 #include <ArduinoJson.h>
 #include "epd.h"
 
+
+///////////////////////////////////////////////////////////////////////////
+// in my case i needed to connect to the internet (ignore it)
+///////////////////////////////////////////////////////////////////////////
+
 const char *ssid = "Karol";         //Enter SSID
 const char *password = "janina123"; //Enter Password
+
+//////////////////////////////////////////////////////////////////////////
 
 const int wake_up = 5;
 const int reset = 4;
@@ -25,6 +32,7 @@ void setup(void)
   Serial.begin(115200);
   Serial.println("Connecting");
 
+
   // Connect to WiFi
   WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED)
@@ -44,7 +52,7 @@ void loop()
 {
 
   HTTPClient http;
-  http.begin("http://192.168.43.95:4001/services/realtime");
+  http.begin("http://192.168.43.247:4001/services/realtime");
 
   int httpCode = http.GET();
 
